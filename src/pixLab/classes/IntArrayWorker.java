@@ -33,6 +33,13 @@ public class IntArrayWorker
    * Method to return the total using a nested for-each loop
    * @return the total of the values in the array
    */
+  
+  public int getCount()
+  {
+	  int count = 0; 
+	  for(int row = 0; <> )
+  }
+  
   public int getTotalNested()
   {
     int total = 0;
@@ -78,6 +85,8 @@ public class IntArrayWorker
     }
     System.out.println();
   }
+  
+    
   
   
   /** 
