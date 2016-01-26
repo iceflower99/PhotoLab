@@ -30,14 +30,50 @@ public class IntArrayWorker
   }
   
   /**
-   * Method to return the total using a nested for-each loop
-   * @return the total of the values in the array
+   * Method to return the count of the number of times as passed integer value is found in the matrix
+   * 
    */
   
-  public int getCount()
+  public int getCount(int searchVal)
   {
 	  int count = 0; 
-	  for(int row = 0; <> )
+	  for(int row = 0; row < matrix.length; row++)
+	  {
+		  for (int col = 0; col < matrix[0].length; col++)
+		  {
+			  if(matrix[row][col] == searchVal)
+			  {
+				  count++;
+			  }
+		  }
+	  }
+	  return count;
+  }
+  
+  public int getLargest()
+  {
+	  int largest = 0; 
+	  for(int row = 0; row < matrix.length; row++)
+	  {
+		  for (int col = 0; col < matrix[0].length; col++)
+		  {
+			  if(matrix[row][col] > largest)
+			  {
+				  largest=matrix[row][col];
+			  }
+		  }
+	  }
+	  return largest;
+  }
+  
+  public int getColTotal(int column)
+  {
+	  int sum = 0; 
+	  for(int row = 0; row < matrix.length; row++)
+	  {
+		 sum+=matrix[row][column];  	   
+	  }
+	  return sum;
   }
   
   public int getTotalNested()
@@ -52,6 +88,8 @@ public class IntArrayWorker
     }
     return total;
   }
+  
+  
   
   /**
    * Method to fill with an increasing count
@@ -69,6 +107,7 @@ public class IntArrayWorker
       }
     }
   }
+  
   
   /**
    * print the values in the array in rows and columns
