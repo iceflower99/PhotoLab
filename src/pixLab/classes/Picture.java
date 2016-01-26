@@ -112,6 +112,63 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  public void zeroGreen()
+  {
+	  Pixel[][] sparks= this.getPixels2D();
+	  for(int row=0; row<sparks.length;row++)
+	  {
+		  for(int col=0; col< sparks[0].length;col++)
+		  {
+			  Pixel currentPixel = sparks[row][col];
+			  currentPixel.setGreen(0);
+		  }
+	  }
+  }
+  
+  public void keepOnlyBlue()
+  {
+	  Pixel[][] color= this.getPixels2D();
+	  for(int row=0; row<color.length;row++)
+	  {
+		  for(int col=0; col< color[0].length;col++)
+		  {
+			  Pixel currentPixel = color[row][col];
+			  currentPixel.setGreen(0);
+			  currentPixel.setRed(0);
+		  }
+	  }
+  }
+  
+  public void keepOnlyRed()
+  
+   {
+	  Pixel[][] pixels= this.getPixels2D();
+	  for(int row=0; row<pixels.length;row++)
+	  {
+		  for(int col=0; col< pixels[0].length;col++)
+		  {
+			  Pixel currentPixel = pixels[row][col];
+			  currentPixel.setGreen(0);
+			  currentPixel.setBlue(0);
+		  }
+	  }
+  }
+  
+  public void keepOnlyGreen()
+  
+  {
+	  Pixel[][] pixels= this.getPixels2D();
+	  for(int row=0; row<pixels.length;row++)
+	  {
+		  for(int col=0; col< pixels[0].length;col++)
+		  {
+			  Pixel currentPixel = pixels[row][col];
+			  currentPixel.setRed(0);
+			  currentPixel.setBlue(0);
+		  }
+	  }
+  }
+  
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
@@ -239,7 +296,7 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("swan.jpg");
     beach.explore();
-    beach.zeroBlue();
+    beach.keepOnlyGreen();
     beach.explore();
   }
   
