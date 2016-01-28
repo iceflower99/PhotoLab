@@ -198,7 +198,7 @@ public class Picture extends SimplePicture
 	  int height = pixels.length;
 	  for(int row= 0; row<height/2;row++)
 	  {
-		  for(int col=0; col<pixels.length;col++)
+		  for(int col=0; col<pixels[0].length;col++)
 		  {
 			  topPixel = pixels[row][col];
 			  bottomPixel= pixels[height - 1 -row][col];
@@ -206,10 +206,7 @@ public class Picture extends SimplePicture
 		  }
 		  
 	  }
-	  
-	  
-	  
-  }
+ }
   
   public void mirrorVerticalRightToLeft()
   {
@@ -224,6 +221,23 @@ public class Picture extends SimplePicture
 			  rightPixel= pixels[row][col];
 			  leftPixel= pixels[row][(pictureWidth/2)-(col-pictureWidth/2)];
 			  leftPixel.setColor(rightPixel.getColor());
+		  }
+	  }
+  }
+  
+  public void mirrorHorizontalBottomToTop()
+  {
+	  Pixel[][] pixels=this.getPixels2D();
+	  Pixel topPixel=null;
+	  Pixel bottomPixel=null;
+	  int height=pixels.length;
+	  for(int row = height-1; row>height/2;row--)
+	  {
+		  for(int col=0; col<pixels[0].length;col++ )
+		  {
+			  bottomPixel=pixels[row][col];
+			  topPixel=pixels[(row-(height-1))*-1][col];
+			  topPixel.setColor(bottomPixel.getColor());
 		  }
 	  }
   }
@@ -312,8 +326,7 @@ public class Picture extends SimplePicture
     Color rightColor = null;
     for (int row = 0; row < pixels.length; row++)
     {
-      for (int col = 0; 
-           col < pixels[0].length-1; col++)
+      for (int col = 0; col < pixels[0].length-1; col++)
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
@@ -354,7 +367,7 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("caterpillar.jpg");
     beach.explore();
-    beach.mirrorHorizontal();
+    beach.mirrorHorizontalBottomToTop();
     beach.explore();
   }
   
