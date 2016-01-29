@@ -173,6 +173,7 @@ public class Picture extends SimplePicture
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
     * from left to right */
+  
   public void mirrorVertical()
   {
     Pixel[][] pixels = this.getPixels2D();
@@ -189,9 +190,31 @@ public class Picture extends SimplePicture
       }
     } 
   }
+<<<<<<< HEAD
   /** Method that mirrors the picture around a 
    * vertical mirror in the center of the picture
    * from right to left */
+=======
+  
+  public void mirrorHorizontal()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel topPixel=null;
+	  Pixel bottomPixel=null;
+	  int height = pixels.length;
+	  for(int row= 0; row<height/2;row++)
+	  {
+		  for(int col=0; col<pixels[0].length;col++)
+		  {
+			  topPixel = pixels[row][col];
+			  bottomPixel= pixels[height - 1 -row][col];
+			  bottomPixel.setColor(topPixel.getColor());
+		  }
+		  
+	  }
+ }
+  
+>>>>>>> origin/master
   public void mirrorVerticalRightToLeft()
   {
 	  Pixel[][] pixels = this.getPixels2D();
@@ -205,6 +228,23 @@ public class Picture extends SimplePicture
 			  rightPixel= pixels[row][col];
 			  leftPixel= pixels[row][(pictureWidth/2)-(col-pictureWidth/2)];
 			  leftPixel.setColor(rightPixel.getColor());
+		  }
+	  }
+  }
+  
+  public void mirrorHorizontalBottomToTop()
+  {
+	  Pixel[][] pixels=this.getPixels2D();
+	  Pixel topPixel=null;
+	  Pixel bottomPixel=null;
+	  int height=pixels.length;
+	  for(int row = height-1; row>height/2;row--)
+	  {
+		  for(int col=0; col<pixels[0].length;col++ )
+		  {
+			  bottomPixel=pixels[row][col];
+			  topPixel=pixels[(row-(height-1))*-1][col];
+			  topPixel.setColor(bottomPixel.getColor());
 		  }
 	  }
   }
@@ -293,8 +333,7 @@ public class Picture extends SimplePicture
     Color rightColor = null;
     for (int row = 0; row < pixels.length; row++)
     {
-      for (int col = 0; 
-           col < pixels[0].length-1; col++)
+      for (int col = 0; col < pixels[0].length-1; col++)
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
@@ -335,10 +374,14 @@ public class Picture extends SimplePicture
   {
     Picture beach = new Picture("swan.jpg");
     beach.explore();
+<<<<<<< HEAD
     beach.keepOnlyRed();
     beach.createCollage();
     beach.edgeDetection(10);
     beach.mirrorVerticalRightToLeft();
+=======
+    beach.mirrorHorizontalBottomToTop();
+>>>>>>> origin/master
     beach.explore();
   }
   
