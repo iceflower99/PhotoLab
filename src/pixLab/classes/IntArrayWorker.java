@@ -49,7 +49,10 @@ public class IntArrayWorker
 	  }
 	  return count;
   }
-  
+  /**
+   * method to return the Largest value in a 2D array
+   * @return
+   */
   public int getLargest()
   {
 	  int largest = 0; 
@@ -65,7 +68,11 @@ public class IntArrayWorker
 	  }
 	  return largest;
   }
-  
+  /**
+   * method to return the total of all the integers in a column 
+   * @param columm
+   * @return
+   */
   public int getColTotal(int column)
   {
 	  int sum = 0; 

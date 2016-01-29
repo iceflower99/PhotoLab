@@ -99,6 +99,7 @@ public class Picture extends SimplePicture
     }
   }
   
+   /** Method to set the red to 0 */
   public void zeroRed()
   {
 	  Pixel[][] original= this.getPixels2D();
@@ -111,7 +112,7 @@ public class Picture extends SimplePicture
 		  }
 	  }
   }
-  
+  /** method to set the green to 0*/
   public void zeroGreen()
   {
 	  Pixel[][] sparks= this.getPixels2D();
@@ -124,7 +125,7 @@ public class Picture extends SimplePicture
 		  }
 	  }
   }
-  
+  /** method to keep only the blue in the picture*/
   public void keepOnlyBlue()
   {
 	  Pixel[][] color= this.getPixels2D();
@@ -138,7 +139,7 @@ public class Picture extends SimplePicture
 		  }
 	  }
   }
-  
+  /** method to keep only the red in the picture */
   public void keepOnlyRed()
   
    {
@@ -153,7 +154,7 @@ public class Picture extends SimplePicture
 		  }
 	  }
   }
-  
+  /** method to keep only the green in the picture*/
   public void keepOnlyGreen()
   
   {
@@ -188,7 +189,9 @@ public class Picture extends SimplePicture
       }
     } 
   }
-  
+  /** Method that mirrors the picture around a 
+   * vertical mirror in the center of the picture
+   * from right to left */
   public void mirrorVerticalRightToLeft()
   {
 	  Pixel[][] pixels = this.getPixels2D();
@@ -304,8 +307,8 @@ public class Picture extends SimplePicture
       }
     }
   }
-  
-  public void RandomColor()
+  //*
+  public void randomColor()
   {
 	  Pixel [][] pixels = this.getPixels2D();
 	  for(Pixel[] row : pixels)
@@ -330,8 +333,11 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("caterpillar.jpg");
+    Picture beach = new Picture("swan.jpg");
     beach.explore();
+    beach.keepOnlyRed();
+    beach.createCollage();
+    beach.edgeDetection(10);
     beach.mirrorVerticalRightToLeft();
     beach.explore();
   }
