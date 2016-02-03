@@ -270,7 +270,26 @@ public class Picture extends SimplePicture {
 
 		}
 	}
+	
+	public void mirrorGull() 
+	{
+		int mirrorPoint = 308;
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		int count = 0;
+		Pixel[][] pixels = this.getPixels2D();
 
+		// loop through the rows
+		for (int row = 232; row < 316; row++) {
+			
+			for (int col = 254; col < mirrorPoint; col++) {
+
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+				rightPixel.setColor(leftPixel.getColor());
+			}
+		}
+	}
 	/**
 	 * copy from the passed fromPic to the specified startRow and startCol in
 	 * the current picture
@@ -361,10 +380,9 @@ public class Picture extends SimplePicture {
 
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("temple.jpg");
+    Picture beach = new Picture("seagull.jpg");
     beach.explore();
-    beach.mirrorTemple();
-    beach.keepOnlyBlue();
+    beach.mirrorGull();
     beach.explore();
     
 
