@@ -290,6 +290,26 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+	
+	public void mirrorDiagonal() 
+	{
+		
+		Pixel leftBottomPixel = null;
+		Pixel rightTopPixel = null;
+		int count = 0;
+		Pixel[][] pixels = this.getPixels2D();
+
+		// loop through the rows
+		for (int row = 0; row < pixels.length; row++) {
+			
+			for (int col = 0; col < row; col++) {
+
+				leftBottomPixel = pixels[row][col];
+				rightTopPixel = pixels[col][row];
+				rightTopPixel.setColor(leftBottomPixel.getColor());
+			}
+		}
+	}
 	/**
 	 * copy from the passed fromPic to the specified startRow and startCol in
 	 * the current picture
@@ -356,6 +376,24 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+	
+	public void edgeDetection2(int edgeDist) {
+		Pixel topPixel = null;
+		Pixel bottomPixel = null;
+		Pixel[][] pixels = this.getPixels2D();
+		Color rightColor = null;
+		for (int row = 0; row < pixels.length - 1; row++) {
+			for (int col = 0; col < pixels[0].length; col++) {
+				topPixel = pixels[row][col];
+				bottomPixel = pixels[row+1][col];
+				rightColor = bottomPixel.getColor();
+				if (topPixel.colorDistance(rightColor) > edgeDist)
+					topPixel.setColor(Color.BLACK);
+				else
+					topPixel.setColor(Color.WHITE);
+			}
+		}
+	}
 
 	// *
 	public void randomColor() {
@@ -380,9 +418,9 @@ public class Picture extends SimplePicture {
 
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("seagull.jpg");
+    Picture beach = new Picture("beach.jpg");
     beach.explore();
-    beach.mirrorGull();
+    beach.mirrorDiagonal();
     beach.explore();
     
 
